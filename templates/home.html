@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <a href="/logout">Logout</a>
+    <h2>Users</h2>
+    <table border="1">
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Device ID</th>
+            <th>Last Subscription Date</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.password }}</td>
+            <td>{{ user.deviceid }}</td>
+            <td>{{ user.last_sub_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Create New User</h2>
+    <form action="/create_user" method="post">
+        Username: <input type="text" name="username" required><br>
+        Password: <input type="password" name="password" required><br>
+        Last Subscription Date: <input type="date" name="last_sub_date"><br>
+        <button type="submit">Create User</button>
+    </form>
+
+    <h2>Update User</h2>
+    <form action="/update_user" method="post">
+        Username: <input type="text" name="username"><br>
+        Password (optional): <input type="password" name="password"><br>
+        Last Subscription Date (optional): <input type="date" name="last_sub_date"><br>
+        <button type="submit">Update User</button>
+    </form>
+</body>
+</html>
